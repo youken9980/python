@@ -35,9 +35,9 @@ def send_request(url):
 
 
 # 解析图片链接
-def assemble_img_url_list(bing_url):
+def assemble_img_url_list(url):
     img_url_list = []
-    response = send_request(bing_url)
+    response = send_request(url)
     json_obj = json.loads(response.decode(CHARSET))
     for img in json_obj["images"]:
         img_url_list.append(BING_ROOT_URL + img["url"])
@@ -55,19 +55,19 @@ def mkdir_if_not_exists(local_dir):
 
 
 # 保存图片到本地
-def save_img(bing_url, local_dir):
-    for img_url in assemble_img_url_list(bing_url):
+def save_img(url, local_dir):
+    for img_url in assemble_img_url_list(url):
         img_id = img_url[img_url.find(ID_BEGIN) + len(ID_BEGIN) : img_url.find(ID_END)]
         # 截取文件名前缀，查找本地文件，判断是否已有相同图片
         idx_zh = img_id.find("_ZH-")
         idx_en = img_id.find("_EN-")
         img_prefix = img_id[0 : idx_zh + idx_en + 1]
+        img_local_path = "%s/%s" % (LOCAL_PATH, img_id)
         exist_file_list = SystemUtil.find(local_dir, img_prefix)
         if len(exist_file_list) > 0:
             print("文件已存在：%s" % exist_file_list[0])
             continue
         # 图片不存在，下载保存
-        img_local_path = "%s/%s" % (LOCAL_PATH, img_id)
         response = send_request(img_url)
         try:
             file = open(img_local_path, "wb")
@@ -76,6 +76,7 @@ def save_img(bing_url, local_dir):
             print("保存成功：%s" % img_local_path)
         except:
             print("保存失败：%s" % img_local_path)
+            exit(1)
 
 
 mkdir_if_not_exists(LOCAL_PATH)
