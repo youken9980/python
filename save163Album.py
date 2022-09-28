@@ -6,6 +6,9 @@ import sys
 import os
 from utils.system_util import SystemUtil
 from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+import time
 
 
 # 请求方法中使用的各常量
@@ -25,12 +28,24 @@ def send_request(url):
 
 # 解析图片链接
 def extract_img_url(url):
-    response = send_request(url)
-    html = BeautifulSoup(response.decode(CHARSET), PARSER)
+    # service = Service()
+    # service.start()
+    # browser = webdriver.Remote(service.service_url)
+    browser = webdriver.Chrome()
+    browser.get(url)
+    time.sleep(0)
+    browser.get(url)
+    time.sleep(0)
+    browser.switch_to.frame("g_iframe")
+    html = BeautifulSoup(browser.page_source, PARSER)
+    img_url = ""
     for item in html.select("head meta"):
         if item.has_attr("property"):
             if item["property"] == "og:image":
-                return item["content"]
+                img_url = item["content"]
+                break
+    browser.quit()
+    return img_url
 
 
 # 若本地存储路径不存在则创建
