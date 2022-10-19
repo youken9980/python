@@ -28,10 +28,6 @@ def send_request(url):
 
 # 解析图片链接
 def extract_img_url(url):
-    # service = Service()
-    # service.start()
-    # browser = webdriver.Remote(service.service_url)
-    browser = webdriver.Chrome()
     browser.get(url)
     time.sleep(0)
     browser.get(url)
@@ -44,7 +40,6 @@ def extract_img_url(url):
             if item["property"] == "og:image":
                 img_url = item["content"]
                 break
-    browser.quit()
     return img_url
 
 
@@ -81,9 +76,19 @@ def save_img(url, local_dir):
         exit(1)
 
 
-if len(sys.argv) < 2:
-    exit(0)
+try:
+    if len(sys.argv) < 2:
+        exit(0)
 
-mkdir_if_not_exists(LOCAL_PATH)
-for arg in sys.argv[1:]:
-    save_img(arg, LOCAL_PATH)
+    mkdir_if_not_exists(LOCAL_PATH)
+
+    # service = Service()
+    # service.start()
+    # browser = webdriver.Remote(service.service_url)
+    browser = webdriver.Chrome()
+    for arg in sys.argv[1:]:
+        save_img(arg, LOCAL_PATH)
+    browser.quit()
+except:
+    print("下载失败")
+    exit(1)
