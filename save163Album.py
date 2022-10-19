@@ -81,5 +81,9 @@ def save_img(url, local_dir):
         exit(1)
 
 
+if len(sys.argv) < 2:
+    exit(0)
+
 mkdir_if_not_exists(LOCAL_PATH)
-save_img(sys.argv[1], LOCAL_PATH)
+for arg in sys.argv[1:]:
+    save_img(arg, LOCAL_PATH)
