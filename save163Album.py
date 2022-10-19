@@ -88,7 +88,9 @@ try:
     browser = webdriver.Chrome()
     for arg in sys.argv[1:]:
         save_img(arg, LOCAL_PATH)
-    browser.quit()
+    browser.close()
 except:
     print("下载失败")
     exit(1)
+finally:
+    browser.quit()
