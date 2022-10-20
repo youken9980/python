@@ -76,7 +76,7 @@ def save_img(url, local_dir):
         exit(1)
 
 
-try:
+if __name__ == '__main__':
     if len(sys.argv) < 2:
         exit(0)
 
@@ -86,11 +86,12 @@ try:
     # service.start()
     # browser = webdriver.Remote(service.service_url)
     browser = webdriver.Chrome()
-    for arg in sys.argv[1:]:
-        save_img(arg, LOCAL_PATH)
-    browser.close()
-except:
-    print("下载失败")
-    exit(1)
-finally:
-    browser.quit()
+    try:
+        for arg in sys.argv[1:]:
+            save_img(arg, LOCAL_PATH)
+    except:
+        print("下载失败")
+        exit(1)
+    finally:
+        browser.close()
+        browser.quit()
