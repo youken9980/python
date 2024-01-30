@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+
 from __future__ import unicode_literals
 import requests
 from bs4 import BeautifulSoup
@@ -7,6 +8,7 @@ import json
 from pyecharts import Bar, Map, Geo
 import pyecharts.echarts.events as events
 from pyecharts_javascripthon import dom
+
 
 TIMEOUT = 180
 QUERY_TASK_URL = "http://cdtpwebgateway-hotfix-xdgc-idesign-dev.opaas.enncloud.cn/CDTPWebGateway/taskHall/follow"

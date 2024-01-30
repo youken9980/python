@@ -1,0 +1,7 @@
+requests
+
+beautifulsoup4
+selenium
+
+pyecharts
+pyecharts-javascripthon
