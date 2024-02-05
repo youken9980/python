@@ -6,6 +6,9 @@
 # https://s-file-1.ykt.cbern.com.cn/zxx/ndrs/resources/tch_material/part_101.json
 # https://s-file-1.ykt.cbern.com.cn/zxx/ndrs/resources/tch_material/part_102.json
 
+# https://r2-ndr.ykt.cbern.com.cn/edu_product/esp/assets/{}.pkg/pdf.pdf
+# https://r3-ndr.ykt.cbern.com.cn/edu_product/esp/assets_document/{}.pkg/pdf.pdf
+
 import requests
 import json
 import os
@@ -77,7 +80,7 @@ def save_pdf(url, local_dir, file_name):
 
 
 start_flag = 0
-with open(ROOT_DIR + "/part_101.json", "r") as file:
+with open(ROOT_DIR + "/part_100.json", "r") as file:
     data = json.load(file)
 count = len(data)
 for index in range(0, count):
