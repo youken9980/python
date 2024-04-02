@@ -7,7 +7,6 @@ import os
 from utils.system_util import SystemUtil
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 import time
 
 
