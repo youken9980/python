@@ -5,3 +5,9 @@ selenium
 
 pyecharts
 pyecharts-javascripthon
+
+opencv-python
+opencv-contrib-python
+numpy
+pillow
+
