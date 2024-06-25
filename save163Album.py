@@ -7,6 +7,7 @@ import os
 from utils.system_util import SystemUtil
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 import time
 
 
@@ -81,10 +82,8 @@ if __name__ == '__main__':
 
     mkdir_if_not_exists(LOCAL_PATH)
 
-    # service = Service()
-    # service.start()
-    # browser = webdriver.Remote(service.service_url)
-    browser = webdriver.Chrome()
+    service = Service('/usr/local/bin/chromedriver')
+    browser = webdriver.Chrome(service=service)
     try:
         for arg in sys.argv[1:]:
             save_img(arg, LOCAL_PATH)
