@@ -82,7 +82,7 @@ if __name__ == '__main__':
 
     mkdir_if_not_exists(LOCAL_PATH)
 
-    service = Service('/usr/local/bin/chromedriver')
+    service = Service('/opt/homebrew/bin/chromedriver')
     browser = webdriver.Chrome(service=service)
     try:
         for arg in sys.argv[1:]:
