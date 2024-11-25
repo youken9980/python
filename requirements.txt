@@ -11,3 +11,6 @@ opencv-contrib-python
 numpy
 pillow
 
+huggingface_hub<0.26.0
+huggingface_hub[cli]
+hf-transfer
