@@ -14,3 +14,9 @@ pillow
 huggingface_hub<0.26.0
 huggingface_hub[cli]
 hf-transfer
+
+xinference[mlx]
+sentence-transformers
+
+marker-pdf
+
