@@ -216,7 +216,7 @@ peft==0.16.0
 pfzy==0.3.4
 phonemizer-fork==3.3.2
 pillow==10.4.0
-pip==25.1.1
+pip==25.2
 platformdirs==4.3.8
 pooch==1.8.2
 portalocker==3.2.0
@@ -373,9 +373,9 @@ wheel==0.45.1
 wrapt==1.17.2
 wsproto==1.2.0
 x-transformers==2.4.9
-xinference==1.7.1.post1
+xinference==1.9.0
 xllamacpp==0.1.23
-xoscar==0.7.11
+xoscar==0.7.15
 xxhash==3.5.0
 yacs==0.1.8
 yarl==1.20.1
